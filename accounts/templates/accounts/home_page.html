@@ -1,0 +1,92 @@
+<!-- @format -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HOME PAGE</title>
+    <style>
+      .loading-spinner {
+        border: 16px solid #f3f3f3;
+        border-top: 16px solid #3498db;
+        border-radius: 50%;
+        width: 120px;
+        height: 120px;
+        animation: spin 2s linear infinite;
+        margin: 0 auto;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Hide the page content when the spinner is displayed */
+      .loading .page-content {
+        display: none;
+      }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+  </head>
+  <body>
+    <header>
+      <div class="d" style="display: flex">
+        <img src="{% static 'images/ICON.jpg'%}" class="imgg2" />
+        <a  class="anchor" href="{% url 'home-page' %}"><h1 style="margin-top: 10px;text-decoration: none;">AUDIFY</h1></a>
+      </div>
+
+      <div class="f">
+        <a class="anchor" href="{% url 'home' %}"><h3 class="a">Upload file</h3></a>
+        <a class="anchor" href="{% url 'link' %}"><h3 class="b">Upload Youtube Link</h3></a>
+        <a  class="anchor" href="{% url 'fblink' %}"><h3 class="b">Upload Facebook Link</h3></a>
+        <a  class="anchor" href="{% url 'twitchlink' %}"><h3 class="b">Upload Twitch Link</h3></a>
+        <a  class="anchor" href="{% url 'video_list' %}"><h3 class="b">Audio List</h3></a>
+        <img
+          src="{% static 'images/download.png'%}"
+          class="imgg"
+          onclick="togglemenu()"
+        />
+      </div>
+
+      <div class="submenuwrap" id="submenu">
+        <div class="submenu">
+          <div class="userinfo">
+            <img src="{% static 'images/download.png'%}" class="imgg" />
+
+            <p>{{customer}}</p>
+          </div>
+          <div class="submenulink">
+            <span>
+              <a href="{% url 'logout' %}" style="color: aliceblue"
+                >Logout</a
+              ></span
+            >
+            <img src="{% static 'images/logout.png'%}" />
+          </div>
+        </div>
+      </div>
+    </header>
+    <script>
+      const submenu = document.getElementById("submenu");
+
+      function togglemenu() {
+        submenu.classList.toggle("open-menu");
+      }
+    </script>
+
+    <div class="attract">
+      <p class="a1">WELCOME</p>
+      <p class="a2">TO</p>
+      <p class="a3">AUDIFY</p>
+      <img src="{% static 'images/music.jpg'%}" class="img3" />
+      
+    </div>
+  </body>
+</html>

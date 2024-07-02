@@ -1,0 +1,143 @@
+/** @format */
+
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+header {
+  display: flex;
+  position: relative;
+  background-color: #7abecc;
+  align-items: center;
+  max-height: 70px;
+  width: 100%;
+  justify-content: space-between;
+}
+* {
+  margin: 0;
+  font-family: "Rubik", sans-serif;
+}
+.imgg {
+  height: 8vh;
+  width: 8vh;
+  margin-top: 1vh;
+  border-radius: 100%;
+}
+hr {
+  width: 37.03px;
+  height: 0px;
+
+  border: 1px solid #7abecc;
+  transform: rotate(90deg);
+}
+
+h3 {
+  color: black;
+}
+
+.imgg2 {
+  height: 8vh;
+  width: 8vh;
+
+  border-radius: 100%;
+}
+
+.f {
+  display: flex;
+  flex-flow: row;
+
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 10vh;
+  margin-right: 1%;
+  width: 100%;
+}
+.d {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 2vh;
+  gap: 2vh;
+}
+
+.anchor {
+  text-decoration: none;
+}
+.b {
+  margin-left: 1;
+  text-decoration: none;
+}
+.submenuwrap {
+  position: absolute;
+  top: 100%;
+  right: 0.25%;
+  width: 320px;
+  max-height: 0px;
+  overflow: hidden;
+  transition: max-height 0.5s;
+}
+.submenuwrap.open-menu {
+  max-height: 400px;
+}
+.submenu {
+  background: #7abecc;
+  padding: 20px;
+  margin: 10px;
+  margin-top: 0px;
+}
+
+.userinfo {
+  display: flex;
+  align-items: center;
+}
+.userinfo p {
+  font-weight: bold;
+  color: white;
+  margin-left: 20px;
+}
+.submenulink {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+.submenulink img {
+  height: 2.5vh;
+  width: 2vh;
+  margin-left: 10px;
+}
+.submenulink span {
+  font-weight: 600;
+}
+.submenulink span:hover {
+  transform: scale(1.1);
+}
+.a1 {
+  color: black;
+  font-size: 100px;
+  text-align: center;
+}
+.a2 {
+  color: black;
+  font-size: 100px;
+  text-align: center;
+}
+.a3 {
+  color: black;
+  font-size: 100px;
+  text-align: center;
+}
+.a4 {
+  text-align: center;
+  color: black;
+}
+body {
+  height: 100vh;
+  background: #7abecc;
+}
+.attract {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.img3 {
+  border-radius: 100%;
+  max-width: 50vh;
+  max-height: 45vh;
+}

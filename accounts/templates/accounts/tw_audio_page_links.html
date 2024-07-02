@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+</head>
+<body>
+    <header>
+      <div class="d" style="display: flex">
+        <img src="{% static 'images/ICON.jpg'%}" class="imgg2" />
+        <a  class="anchor" href="{% url 'home-page' %}"><h1 style="margin-top: 10px;text-decoration: none;">AUDIFY</h1></a>
+      </div>
+
+      <div class="f">
+        <a class="anchor" href="{% url 'home' %}"><h3 class="a">Upload file</h3></a>
+        <a class="anchor" href="{% url 'link' %}"><h3 class="b">Upload Youtube Link</h3></a>
+        <a  class="anchor" href="{% url 'fblink' %}"><h3 class="b">Upload Facebook Link</h3></a>
+        <a  class="anchor" href="{% url 'twitchlink' %}"><h3 class="b">Upload Twitch Link</h3></a>
+        <a  class="anchor" href="{% url 'video_list' %}"><h3 class="b">Audio List</h3></a>
+        <img
+          src="{% static 'images/download.png'%}"
+          class="imgg"
+          onclick="togglemenu()"
+        />
+      </div>
+
+      <div class="submenuwrap" id="submenu">
+        <div class="submenu">
+          <div class="userinfo">
+            <img src="{% static 'images/download.png'%}" class="imgg" />
+
+            <p>{{customer}}</p>
+          </div>
+          <div class="submenulink">
+            <span>
+              <a href="{% url 'logout' %}" style="color: aliceblue"
+                >Logout</a
+              ></span
+            >
+            <img src="{% static 'images/logout.png'%}" />
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div>
+        <audio id="my-audio" controls>
+            <source src="{{ links.audio_file.url }}" type="audio/wav">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <div>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.timestamps.id_for_label }}">Time stamp:</label>
+                {{ form.timestamps }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.comments.id_for_label }}">Comments:</label>
+                {{ form.comments }}
+            </div>
+            
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+    <div>
+        <table>
+            <th>time stamps</th>
+            <th>comments</th>
+        
+    {% for c in comments %}   
+        <tr>
+            <td>{{c.timestamps}}</td>
+            <td>{{c.comments}}</td>
+        </tr>
+    {% endfor %}   
+</table>
+        
+    </div>
+    <script>
+         var audioElement = document.getElementById('my-audio');
+    var timestampsField = document.getElementById('{{ form.timestamps.id_for_label }}');
+
+    audioElement.addEventListener('pause', function() {
+        var pausedTimestamp = audioElement.currentTime;
+        
+        var hours = Math.floor(pausedTimestamp / 3600);
+        var minutes = Math.floor((pausedTimestamp % 3600) / 60);
+        var seconds = Math.floor(pausedTimestamp % 60);
+    
+        var formattedTime = hours.toString().padStart(2, '0') + ':' +
+                            minutes.toString().padStart(2, '0') + ':' +
+                            seconds.toString().padStart(2, '0');
+    
+        timestampsField.value = formattedTime;
+    });
+    
+      const submenu = document.getElementById("submenu");
+
+      function togglemenu() {
+        submenu.classList.toggle("open-menu");
+      }
+    
+    </script>
+</body>
+
+</html>
